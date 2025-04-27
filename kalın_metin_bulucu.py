@@ -49,6 +49,8 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                             #öncekisatırdakalın=1
                         with open(pdf_path[:-4]+f"{sıra}.txt","a") as f:
                             f.write(metin)
+                            if sıra==line_counter:
+                                f.write(f"{page_num}")
                     if bold_found:
                         full_line = "".join(line_text).strip()
                         if full_line:
