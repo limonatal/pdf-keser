@@ -69,7 +69,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
 #                                            case True:
 #                                                büyük+=1
 #                                                print(küçük)
-                                    if büyük>=küçük:
+                                    if büyük>küçük:
                                         üstbaşlık=metin
                                     f.write("\n}")
                                     özet=""
