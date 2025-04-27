@@ -7,6 +7,10 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
     #font_büyüklüğü = []
     line_counter = 0
     sıra=0
+    özet=""
+    başlık=""
+    üstbaşlık=""
+    üstte=0
     #os.rmdir(pdf_path[:-4])
     try:
         os.mkdir(pdf_path[:-4])
@@ -31,7 +35,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                         for i in range(10):
                             if metin==f"{i}":
                                 kalın_mı=False
-                        if len(metin)<=3:
+                        if len(metin)<=4:
                             kalın_mı=False
 #                           for i in range(len(metin)):
 #                                   print(ord(metin[i]),"\n")
@@ -42,15 +46,37 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                         if kalın_mı: #and öncekisatırdakalın==0:
                             bold_found = True
                             if metin[0].islower():
+                                özet+=metin
                                 pass
                             else:
-                                sıra = line_counter
-                                metin+="\n"
+                                with open(pdf_path[:-4]+f"{sıra}.json","a") as f:
+                                    f.write("{\n")
+                                    f.write(f" \"title\": \"{başlık}\",\n \"parent_title\":\"{üstbaşlık}\",\n \"page\": {page_num},\n \"summary\": \"{özet}\"")
+                                    sıra = line_counter
+                                    başlık=metin
+                                    büyük=0
+                                    küçük=0
+                                    for a in metin:
+                                        if a.islower():
+                                            küçük+=1
+                                            print(küçük,büyük)
+                                        else:
+                                            büyük+=1
+#                                        match a.isupper():
+#                                            case False:
+#                                                küçük+=0
+#
+#                                            case True:
+#                                                büyük+=1
+#                                                print(küçük)
+                                    if büyük>=küçük:
+                                        üstbaşlık=metin
+                                    f.write("\n}")
+                                    özet=""
+                                    pass
                             #öncekisatırdakalın=1
-                        with open(pdf_path[:-4]+f"{sıra}.txt","a") as f:
-                            f.write(metin)
-                            if sıra==line_counter:
-                                f.write(f"{page_num}")
+                        else:
+                            özet+=metin
                     if bold_found:
                         full_line = "".join(line_text).strip()
                         if full_line:
