@@ -4,4 +4,4 @@ finans/
 input/
 ayıklayıcı.py
 *.pdf
-__pycache__
+#__pycache__
