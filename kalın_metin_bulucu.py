@@ -42,7 +42,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                         if kalın_mı: #and öncekisatırdakalın==0:
                             bold_found = True
                             if metin[0].islower():
-                                print("sdnldşjnbneşrlangşasdlndsşalfknasnddşflkn")
+                                pass
                             else:
                                 sıra = line_counter
                                 metin+="\n"
