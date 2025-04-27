@@ -1,10 +1,10 @@
 import fitz  # PyMuPDF
-import statistics
+#import statistics
 import os
 def kalınharflerinsatırlarıvesayfaları(pdf_path):
     doc = fitz.open(pdf_path)
     bold_lines = []
-    font_büyüklüğü = []
+    #font_büyüklüğü = []
     line_counter = 0
     sıra=0
     #os.rmdir(pdf_path[:-4])
@@ -38,7 +38,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
 #                                   if ord(metin[i])>300:
 #                                           kalın_mı = False
                         line_text.append(metin)
-                        font_büyüklüğü.append(span["size"])
+                        #font_büyüklüğü.append(span["size"])
                         if kalın_mı: #and öncekisatırdakalın==0:
                             bold_found = True
                             if metin[0].islower():
