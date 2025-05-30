@@ -3,9 +3,9 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
     doc = fitz.open(pdf_path)
     kalın_metinler = []
     satır_sayıcısı = 0
-    sıra=0
+    #sıra=0
     özet=""
-    başlık=""
+    #başlık=""
     üstbaşlık=""
     for page_num, page in enumerate(doc):
         blocks = page.get_text("dict")["blocks"]
@@ -23,8 +23,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                                 pass
                             else:
                                     #print(metin)
-                                    sıra = satır_sayıcısı
-                                    başlık=metin
+                                    #sıra = satır_sayıcısı
                                     büyük=0
                                     küçük=0
                                     metin.replace('"',"\"")
