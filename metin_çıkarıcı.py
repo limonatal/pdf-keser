@@ -6,4 +6,3 @@ def metinçıkarıcı(pdf_path):
         with open(pdf_path[:-3]+"txt","a") as f:
             f.write(metin)
             #f.write( "*** \n")
-print(".".isupper())

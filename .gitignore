@@ -4,4 +4,6 @@ finans/
 input/
 ayıklayıcı.py
 *.pdf
+*.zip
+kalın_metin_bulucu.py
 #__pycache__

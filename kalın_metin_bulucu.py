@@ -10,7 +10,6 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
     özet=""
     başlık=""
     üstbaşlık=""
-    üstte=0
     #os.rmdir(pdf_path[:-4])
     try:
         os.mkdir(pdf_path[:-4])
@@ -32,11 +31,12 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                     for span in line["spans"]:
                         metin=span["text"]
                         kalın_mı = (span["flags"] & (1 << 4)) or "bold" in span["font"].lower()
-                        for i in range(10):
-                            if metin==f"{i}":
-                                kalın_mı=False
-                        if len(metin)<=4:
-                            kalın_mı=False
+#                        turkish_alphabet = "abcçdefgğhıjklmnoöprsştuüvyz" # i yok
+#                        if len(metin)==1:
+#                            break
+#                        elif len(metin) <= 2 and metin[0].lower() in turkish_alphabet and metin[1].lower() in turkish_alphabet or metin[-1]=="-":
+#                            print(metin)
+#                            kalın_mı=False
 #                           for i in range(len(metin)):
 #                                   print(ord(metin[i]),"\n")
 #                                   if ord(metin[i])>300:
@@ -47,6 +47,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                             bold_found = True
                             if metin[0].islower():
                                 özet+=metin
+                                bold_found = False
                                 pass
                             else:
                                 with open(pdf_path[:-4]+f"{sıra}.json","a") as f:
@@ -56,12 +57,13 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                                     başlık=metin
                                     büyük=0
                                     küçük=0
+                                    metin.replace('"',"\"")
                                     for a in metin:
-                                        if a.islower():
-                                            küçük+=1
-                                            print(küçük,büyük)
-                                        else:
+                                        if a.isupper():
                                             büyük+=1
+                                            #print(küçük,büyük)
+                                        else:
+                                            küçük+=1
 #                                        match a.isupper():
 #                                            case False:
 #                                                küçük+=0
@@ -77,6 +79,7 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                             #öncekisatırdakalın=1
                         else:
                             özet+=metin
+                            bold_found = False
                     if bold_found:
                         full_line = "".join(line_text).strip()
                         if full_line:
