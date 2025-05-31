@@ -47,5 +47,11 @@ def kalınharflerinsatırlarıvesayfaları(pdf_path):
                                     pass
                         else:
                             özet+=metin
-
+    kalın_metinler.append({
+        "page" : 0,
+        "line" : 0,
+        "başlık" : pdf_path[:-4],
+        "üstbaşlık":"",
+        "summary" :"",
+    })
     return kalın_metinler

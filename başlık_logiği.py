@@ -1,4 +1,4 @@
-def hiyerarşi(başlıklar_listesi):
+def hiyerarşi(başlıklar_listesi,pdf_path):
     # İş: başlıklar_listesi [ {'başlık': ...}, ... ]
     # Her başlık için ana başlık hesapla (ör: 1.2.5 için 1.2), ve parent_title olarak ekle
     başlık_dict = {b['başlık']: b for b in başlıklar_listesi}
@@ -6,6 +6,10 @@ def hiyerarşi(başlıklar_listesi):
     prev_no_number_title = None
 
     for idx, a in enumerate(başlıklar_listesi):
+        if a["üstbaşlık"]==a["başlık"]:
+            #print(a["üstbaşlık"])
+            a["üstbaşlık"]=pdf_path
+            #print(a["üstbaşlık"])
         b = a["başlık"]
         has_yasaörnekyorum = -b.find("Örnek") * -b.find("Yorum") * -b.find("Yasa")
         # Sayı içeren başlık mı? (örn: "1.2", "3" gibi)

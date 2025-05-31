@@ -23,10 +23,10 @@ if __name__ == "__main__":
             for girdi in kalın_başlıklar:
                 print(f"Sayfa: {girdi['page']}, Satır: {girdi['line']}, Başlık: {girdi["başlık"]}, Üstbaşlık: {girdi["üstbaşlık"]} Metin: {girdi['summary']} \n")
             if hçalıştır:
-                hiyerarşi(kalın_başlıklar)
+                hiyerarşi(kalın_başlıklar,a)
             if jçalıştır:
                 if hçalıştır:
-                    json_türet(hiyerarşi(kalın_başlıklar),a)
+                    json_türet(hiyerarşi(kalın_başlıklar,a),a)
                 else:
                     json_türet(kalın_başlıklar,a)
 
